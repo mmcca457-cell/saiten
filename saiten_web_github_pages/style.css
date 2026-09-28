@@ -1,0 +1,93 @@
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000000}
+body{display:flex;align-items:center;justify-content:center}
+#sheet{
+  position:relative;
+  width:100vw;
+  max-width:1920px;
+  aspect-ratio:16/9;
+  background:url("採点背景.jpg") center center/100% 100% no-repeat;
+  overflow:hidden;
+}
+#scoreBoard{
+  position:absolute;
+  left:13.1%;
+  top:22.95%;
+  width:73.8%;
+  height:70.0%;
+  display:grid;
+  grid-template-rows:repeat(8,1fr);
+}
+.row{
+  position:relative;
+  width:100%;
+  height:100%;
+  display:grid;
+  grid-template-columns:repeat(9,1fr);
+}
+.cell{
+  position:relative;
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+  border:3px solid #e4c55b;
+  border-top-width:3px;
+  border-bottom-width:3px;
+  border-left-width:3px;
+  border-right-width:3px;
+  border-radius:0;
+  background:rgba(255,255,255,.94);
+  box-shadow:none;
+  cursor:pointer;
+}
+.cell:hover{background:rgba(255,255,255,.98)}
+.cell.selected{
+  background:#bd3039;
+  border:3px solid #e4c55b;
+}
+.cell.selected::after{
+  content:attr(data-label);
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Hiragino Mincho Pro","MS PMincho",serif;
+  font-size:clamp(25px,3.15vw,60px);
+  font-weight:400;
+  line-height:1;
+}
+.arrow{
+  position:absolute;
+  top:50%;
+  width:4%;
+  height:70%;
+  transform:translateY(-50%);
+  border:0;
+  border-radius:0;
+  background:#fff;
+  padding:0;
+  cursor:pointer;
+  Z-index:5;
+}
+.arrow.left{left:-4.8%}
+.arrow.right{right:-4.8%}
+.arrow::before{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:0;height:0;
+  border-top:clamp(7px,.60vw,12px) solid transparent;
+  border-bottom:clamp(7px,.60vw,12px) solid transparent;
+}
+.arrow.left::before{border-right:clamp(10px,.100vw,18px) solid #000}
+.arrow.right::before{border-left:clamp(10px,.100vw,18px) solid #000}
+.arrow:hover{filter:brightness(.96)}
+.arrow:active{transform:translateY(calc(-50% + 1px))}
+@media(max-width:900px){
+  .cell{border-width:2px}
+}
