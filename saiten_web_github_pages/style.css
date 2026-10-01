@@ -4,8 +4,7 @@ body{display:flex;align-items:center;justify-content:center}
 #sheet{
   position:relative;
   width:100vw;
-  max-width:1920px;
-  aspect-ratio:16/9;
+  height:100vh;
   background:url("採点背景.jpg") center center/100% 100% no-repeat;
   overflow:hidden;
 }
